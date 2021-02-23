@@ -4,7 +4,7 @@ class Hero(override var hp: Int, override val dmg: Int, val name: String, overri
     private var minion : Minion? = null
 
     fun setMinion(minion: Minion) {
-        this. minion = minion
+        this.minion = minion
     }
 
     override fun getInfo() {
@@ -19,6 +19,20 @@ class Hero(override var hp: Int, override val dmg: Int, val name: String, overri
         }
     }
 
+    fun fight(anotherHero: Hero) {
+        val hit1 = hit()
+        val hit2 = anotherHero.hit()
+        this.hp -= hit2
+        anotherHero.hp -= hit1
+        println("Wow, a multiplayer fight")
+        if (this.hp <= 0) {
+            this.killed = true
+        }
+        if (anotherHero.hp <= 0) {
+            anotherHero.killed = true
+        }
+    }
+
     override fun fight(anotherCreature: Creature) {
         var hit1 = hit()
         val hit2 = anotherCreature.hit()
@@ -28,14 +42,14 @@ class Hero(override var hp: Int, override val dmg: Int, val name: String, overri
             hit1 = minion!!.hit()
             this.minion!!.hp -= hit2
             anotherCreature.hp -= hit1
-            if (this.minion!!.hp < 0) {
+            if (this.minion!!.hp <= 0) {
                 this.minion!!.killed = true
             }
         }
-        if (this.hp < 0) {
+        if (this.hp <= 0) {
             this.killed = true
         }
-        if (anotherCreature.hp < 0) {
+        if (anotherCreature.hp <= 0) {
             anotherCreature.killed = true
         }
     }

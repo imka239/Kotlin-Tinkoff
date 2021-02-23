@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_PARAMETER")
+
 import kotlin.Boolean as Boolean
 
 interface Creature {
@@ -24,10 +26,10 @@ interface Creature {
         val hit2 = anotherCreature.hit()
         this.hp -= hit2
         anotherCreature.hp -= hit1
-        if (this.hp < 0) {
+        if (this.hp <= 0) {
             this.killed = true
         }
-        if (anotherCreature.hp < 0) {
+        if (anotherCreature.hp <= 0) {
             anotherCreature.killed = true
         }
     }
