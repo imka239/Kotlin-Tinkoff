@@ -3,9 +3,9 @@
 import kotlin.Boolean as Boolean
 
 abstract class Creature {
-    var hp : Int = 0
-    val dmg : Int = 0
-    var killed : Boolean = false
+    open var hp : Int = 0
+    open val dmg : Int = 0
+    open var killed : Boolean = false
 
     abstract fun getInfo()
 
@@ -17,7 +17,7 @@ abstract class Creature {
         }
     }
 
-    fun fight(anotherCreature: Creature) {
+    open fun fight(anotherCreature: Creature) {
         val hit1 = hit()
         val hit2 = anotherCreature.hit()
         hp -= hit2

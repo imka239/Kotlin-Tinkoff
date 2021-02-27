@@ -2,7 +2,7 @@ class Minion(
     override var hp: Int,
     override val dmg: Int,
     override var killed : Boolean = false
-) : Creature {
+) : Creature() {
 
     override fun getInfo() {
         if (killed) {

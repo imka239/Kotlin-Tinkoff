@@ -1,4 +1,4 @@
-class NPC(override var hp: Int, override val dmg: Int, override var killed : Boolean = false) : Creature {
+class NPC(override var hp: Int, override val dmg: Int, override var killed : Boolean = false) : Creature() {
     companion object {
         var id : Int = 0
     }
