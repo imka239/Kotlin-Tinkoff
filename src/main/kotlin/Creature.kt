@@ -2,14 +2,12 @@
 
 import kotlin.Boolean as Boolean
 
-interface Creature {
-    var hp : Int
-    val dmg : Int
-    var killed : Boolean
-        get() = false
-        set(value) {}
+abstract class Creature {
+    var hp : Int = 0
+    val dmg : Int = 0
+    var killed : Boolean = false
 
-    fun getInfo()
+    abstract fun getInfo()
 
     fun hit() : Int {
         return if (killed) {
