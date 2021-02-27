@@ -9,25 +9,23 @@ interface Creature {
         get() = false
         set(value) {}
 
-    fun getInfo() {
-        println("Just abstraction, override me")
-    }
+    fun getInfo()
 
     fun hit() : Int {
-        if (killed) {
-            return 0
+        return if (killed) {
+            0
         } else {
-            return this.dmg
+            dmg
         }
     }
 
     fun fight(anotherCreature: Creature) {
         val hit1 = hit()
         val hit2 = anotherCreature.hit()
-        this.hp -= hit2
+        hp -= hit2
         anotherCreature.hp -= hit1
-        if (this.hp <= 0) {
-            this.killed = true
+        if (hp <= 0) {
+            killed = true
         }
         if (anotherCreature.hp <= 0) {
             anotherCreature.killed = true

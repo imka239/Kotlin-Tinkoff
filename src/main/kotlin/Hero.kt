@@ -1,32 +1,30 @@
-import kotlin.math.min
-
 class Hero(override var hp: Int, override val dmg: Int, val name: String, override var killed : Boolean = false) : Creature {
     private var minion : Minion? = null
 
-    fun setMinion(minion: Minion) {
-        this.minion = minion
+    fun setMinion(heroMinion: Minion) {
+        minion = heroMinion
     }
 
     override fun getInfo() {
-        if (this.killed) {
+        if (killed) {
             println("You are killed, wait for respawn")
             return
         }
         println("Your hp : $hp, your dmg : $dmg")
-        if (this.minion != null) {
+        minion?.let {
             println("Wow, you have minion")
-            this.minion!!.getInfo()
+            it.getInfo()
         }
     }
 
     fun fight(anotherHero: Hero) {
         val hit1 = hit()
         val hit2 = anotherHero.hit()
-        this.hp -= hit2
+        hp -= hit2
         anotherHero.hp -= hit1
         println("Wow, a multiplayer fight")
-        if (this.hp <= 0) {
-            this.killed = true
+        if (hp <= 0) {
+            killed = true
         }
         if (anotherHero.hp <= 0) {
             anotherHero.killed = true
@@ -36,18 +34,18 @@ class Hero(override var hp: Int, override val dmg: Int, val name: String, overri
     override fun fight(anotherCreature: Creature) {
         var hit1 = hit()
         val hit2 = anotherCreature.hit()
-        this.hp -= hit2
+        hp -= hit2
         anotherCreature.hp -= hit1
-        if (this.minion != null) {
-            hit1 = minion!!.hit()
-            this.minion!!.hp -= hit2
+        minion?.let {
+            hit1 = it.hit()
+            it.hp -= hit2
             anotherCreature.hp -= hit1
-            if (this.minion!!.hp <= 0) {
-                this.minion!!.killed = true
+            if (it.hp <= 0) {
+                it.killed = true
             }
         }
-        if (this.hp <= 0) {
-            this.killed = true
+        if (hp <= 0) {
+            killed = true
         }
         if (anotherCreature.hp <= 0) {
             anotherCreature.killed = true
