@@ -1,5 +1,9 @@
-class Hero(override var hp: Int, override val dmg: Int, val name: String, override var killed : Boolean = false) :
-    Creature() {
+class Hero(
+    override var hp: Int,
+    override val dmg: Int,
+    val name: String,
+    override var killed : Boolean = false
+) : Creature() {
     private var minion : Minion? = null
 
     fun setMinion(heroMinion: Minion) {
