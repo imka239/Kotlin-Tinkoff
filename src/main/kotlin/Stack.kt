@@ -1,12 +1,10 @@
 import java.util.*
 
-class Stack<E>(vararg elems: E) {
-    private val stack: LinkedList<E> = LinkedList<E>()
+class Stack<E>(elems: Collection<E> = LinkedList<E>()) {
+    private val stack: MutableList<E> = LinkedList<E>();
 
     init {
-        for (elem in elems) {
-            stack.add(elem)
-        }
+        stack.addAll(elems)
     }
 
     fun push(elem : E) {
@@ -15,10 +13,9 @@ class Stack<E>(vararg elems: E) {
 
     fun pop(): E? {
         if (stack.isEmpty()) {
-            println("stack is empty")
-            return null
+            throw Exception("stack is empty")
         }
-        return stack.pollLast()
+        return stack.removeLast()
     }
 
     fun size() : Int {

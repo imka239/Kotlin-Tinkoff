@@ -1,12 +1,10 @@
 import java.util.*
 
-class Queue<E>(vararg elems: E) {
-    private val queue : LinkedList<E> = LinkedList()
+class Queue<E>(elems: Collection<E> = LinkedList<E>()) {
+    private val queue: MutableList<E> = LinkedList<E>();
 
     init {
-        for (elem in elems) {
-            queue.add(elem)
-        }
+        queue.addAll(elems)
     }
 
     fun enqueue(elem : E) {
@@ -15,10 +13,9 @@ class Queue<E>(vararg elems: E) {
 
     fun dequeue(): E? {
         if (queue.isEmpty()) {
-            println("queue is empty")
-            return null
+            throw Exception("queue is empty")
         }
-        return queue.pollFirst()
+        return queue.removeFirst()
     }
 
     fun size() : Int {
