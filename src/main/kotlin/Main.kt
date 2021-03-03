@@ -1,3 +1,5 @@
+import java.util.*
+
 fun main() {
     val stack = Stack<Int>()
     val queue = Queue<Int>()
@@ -20,4 +22,9 @@ fun main() {
     println(stack.pop())
     println(stack.pop())
     println(stack.pop())
+    //DLS
+    val st = Stack<Int>(1, 2, 3)
+    print(st.pop())
+    print(st.pop())
+    print(st.pop())
 }

@@ -1,8 +1,13 @@
-import java.lang.Exception
 import java.util.*
 
-class Stack<E> {
-    private val stack = LinkedList<E>()
+class Stack<E>(vararg elems: E) {
+    private val stack: LinkedList<E> = LinkedList<E>()
+
+    init {
+        for (elem in elems) {
+            stack.add(elem)
+        }
+    }
 
     fun push(elem : E) {
         stack.add(elem)

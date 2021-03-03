@@ -1,8 +1,13 @@
-import java.lang.Exception
 import java.util.*
 
-class Queue<E> {
-    private val queue = LinkedList<E>()
+class Queue<E>(vararg elems: E) {
+    private val queue : LinkedList<E> = LinkedList()
+
+    init {
+        for (elem in elems) {
+            queue.add(elem)
+        }
+    }
 
     fun enqueue(elem : E) {
         queue.add(elem)
