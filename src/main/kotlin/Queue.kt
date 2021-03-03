@@ -15,9 +15,17 @@ class Queue<E>(elems: Collection<E> = LinkedList<E>()) {
         queue.add(elem)
     }
 
-    fun dequeue(): E? {
+    fun dequeue(): E {
         if (queue.isEmpty()) {
             throw Exception("queue is empty")
+        }
+        return queue.removeFirst()
+    }
+
+    fun safeDequeue(): E? {
+        if (queue.isEmpty()) {
+            println("queue is empty")
+            return null
         }
         return queue.removeFirst()
     }

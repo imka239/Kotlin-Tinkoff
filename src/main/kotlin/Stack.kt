@@ -22,6 +22,14 @@ class Stack<E>(elems: Collection<E> = LinkedList<E>()) {
         return stack.removeLast()
     }
 
+    fun safePop(): E? {
+        if (stack.isEmpty()) {
+            println("stack is empty")
+            return null
+        }
+        return stack.removeFirst()
+    }
+
     fun size() : Int {
         return stack.size
     }
