@@ -7,6 +7,10 @@ class Queue<E>(elems: Collection<E> = LinkedList<E>()) {
         queue.addAll(elems)
     }
 
+    constructor(vararg elems : E) : this() {
+        queue.addAll(elems)
+    }
+
     fun enqueue(elem : E) {
         queue.add(elem)
     }

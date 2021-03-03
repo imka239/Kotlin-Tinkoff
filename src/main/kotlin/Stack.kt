@@ -7,6 +7,10 @@ class Stack<E>(elems: Collection<E> = LinkedList<E>()) {
         stack.addAll(elems)
     }
 
+    constructor(vararg elems : E) : this() {
+        stack.addAll(elems)
+    }
+
     fun push(elem : E) {
         stack.add(elem)
     }

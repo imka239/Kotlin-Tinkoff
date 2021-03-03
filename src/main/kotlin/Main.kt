@@ -25,4 +25,8 @@ fun main() {
     print(st.pop())
     print(st.pop())
     print(st.pop())
+    val que = Queue(1, 2, 3)
+    print(que.dequeue())
+    print(que.dequeue())
+    print(que.dequeue())
 }
