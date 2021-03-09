@@ -24,4 +24,9 @@ fun main() {
     anotherHero.getInfo()
     hero.getInfo()
     println()
+
+    hero.fight(anotherHero)
+    anotherHero.getInfo()
+    hero.getInfo()
+    println()
 }

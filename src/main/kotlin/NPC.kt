@@ -3,7 +3,7 @@ class NPC(
     override val dmg: Int,
     override var killed : Boolean = false
 ) : Creature() {
-    companion object {
+    private companion object {
         var id : Int = 0
     }
     private val npcId : Int = id

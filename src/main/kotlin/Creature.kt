@@ -3,9 +3,10 @@
 import kotlin.Boolean as Boolean
 
 abstract class Creature {
-    open var hp : Int = 0
-    open val dmg : Int = 0
-    open var killed : Boolean = false
+    protected open var hp : Int = 0
+        get() = field
+    protected open val dmg : Int = 0
+    protected open var killed : Boolean = false
 
     abstract fun getInfo()
 
@@ -14,6 +15,13 @@ abstract class Creature {
             0
         } else {
             dmg
+        }
+    }
+
+    open fun changeHp(delta: Int) {
+        hp -= delta
+        if (hp <= 0) {
+            killed = true
         }
     }
 

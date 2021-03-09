@@ -40,20 +40,14 @@ class Hero(
         var hit1 = hit()
         val hit2 = anotherCreature.hit()
         hp -= hit2
-        anotherCreature.hp -= hit1
+        anotherCreature.changeHp(hit1)
         minion?.let {
             hit1 = it.hit()
-            it.hp -= hit2
-            anotherCreature.hp -= hit1
-            if (it.hp <= 0) {
-                it.killed = true
-            }
+            it.changeHp(hit2)
+            anotherCreature.changeHp(hit1)
         }
         if (hp <= 0) {
             killed = true
-        }
-        if (anotherCreature.hp <= 0) {
-            anotherCreature.killed = true
         }
     }
 }
