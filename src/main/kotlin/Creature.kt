@@ -4,7 +4,6 @@ import kotlin.Boolean as Boolean
 
 abstract class Creature {
     protected open var hp : Int = 0
-        get() = field
     protected open val dmg : Int = 0
     protected open var killed : Boolean = false
 
@@ -18,7 +17,10 @@ abstract class Creature {
         }
     }
 
-    open fun changeHp(delta: Int) {
+    fun getDamaged(delta: Int) {
+        if (delta < 0) {
+            throw Exception("Damage should be positive")
+        }
         hp -= delta
         if (hp <= 0) {
             killed = true
